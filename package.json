@@ -1,0 +1,7 @@
+{
+  "name": "selt18project-g002",
+  "private": true,
+  "dependencies": {
+    "materialize-social": "^1.0.3"
+  }
+}

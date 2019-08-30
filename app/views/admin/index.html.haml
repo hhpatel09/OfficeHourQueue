@@ -1,0 +1,17 @@
+- if @users.present?
+  %table#questions{class: 'mdl-data-table mdl-js-data-table mdl-shadow--2dp'}
+    %thead
+      %tr
+        %th Name
+        %th Role
+        %th Email
+        %th Edit Role
+    %tbody
+      - @users.each do |u|
+        %tr
+          %td{class:'mdl-data-table__cell--non-numeric'}=u.first_name
+          %td=@roles.find(u.role_id).role_name
+          %td=u.email
+          %td=link_to( "Edit #{u.first_name}", edit_admin_path(u))
+- else
+  %p No user roles to modify

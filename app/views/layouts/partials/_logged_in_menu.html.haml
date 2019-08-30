@@ -1,0 +1,5 @@
+%li
+  %a=link_to "Home", home_path
+=render partial: 'layouts/partials/info_list_items'
+%li
+  %a=link_to "Logout", logout_path if @current_user

@@ -1,0 +1,9 @@
+%h3="Edit role for #{@user_to_edit.first_name}"
+= form_tag(controller: :admin, action: :update)  do
+
+  =label_tag 'New role'
+  =select_tag(:role_id, options_for_select(@avail_roles.collect{|r| [r.role_name, r.id]},@roles.find(@user_to_edit.role_id).id))
+  =submit_tag 'Set permissions.'
+
+%br
+=button_to "Back", admin_index_path, method: :get

@@ -1,0 +1,9 @@
+{
+  "GROUP": "G002",
+  "ALL_SPRINTS": {
+    "SPRINT1_URL": "http://selt18project-g002-1.herokuapp.com/",
+    "SPRINT2_URL": "http://selt18project-g002-2.herokuapp.com/",
+    "SPRINT3_URL": "http://selt18project-g002-3.herokuapp.com/",
+    "FINAL_URL": "http://selt18project-g002-3.herokuapp.com/"
+  }
+}

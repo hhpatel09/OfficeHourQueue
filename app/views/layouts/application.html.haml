@@ -1,0 +1,37 @@
+!!!
+%html
+  %head
+    %title Selt18projectG002
+    = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag 'https://fonts.googleapis.com/icon?family=Material+Icons'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    %div{class: 'navbar-fixed'}
+      %nav{class: 'blue lighten-2'}
+        %div{class: 'nav-wrapper'}
+          %div{class: 'container'}
+            = link_to 'Office Hours Queue', '/', {class: 'brand-logo'}
+            %ul{class: 'right hide-on-med-and-down'}
+              -if @current_user
+                %li
+                =render partial: 'layouts/partials/logged_in_menu'
+              -else
+                =render partial: 'layouts/partials/not_logged_in_menu'
+
+  #main
+    - if flash[:notice]
+      %div{class: 'row'}
+        %div{class: 'col s12'}
+          %div{class: 'card-panel green'}
+            %span{ class: 'white-text'}="#{flash[:notice]}"
+      -##warning.message= flash[:warning]
+    - elsif flash[:warning]
+      %div{class: 'row'}
+        %div{class: 'col s12'}
+          %div{class: 'card-panel red'}
+            %span{ class: 'white-text', style: 'font-size: medium;'}="#{flash[:warning]}"
+      -##warning.message= flash[:warning]
+    %div{class: 'container'}
+      = yield

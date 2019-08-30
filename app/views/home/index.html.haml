@@ -1,0 +1,29 @@
+%h2="Welcome, #{@role.role_name}"
+-if @admin_button
+  =button_to "Edit User Permissions", admin_index_path, { method: :get, class: 'waves-effect waves-light btn-small blue lighten-2 white_text' }
+  %br
+  =button_to "Manage Courses", course_index_path, { method: :get, class: 'waves-effect waves-light btn-small blue lighten-2 white_text' }
+  %br
+
+-if @oh_button
+  -#=button_to "Manage Enrollment", course_user_index_path(1), { method: :get, class: 'waves-effect waves-light btn-small blue lighten-2' }
+  -#%br
+  -#=button_to "Start new Office Hour", new_office_hours_session_path, { method: :get, class: 'waves-effect waves-light btn-small blue lighten-2' }
+  %div{class: 'row'}
+    %div{class: 'input-field col s12 m3'}
+      = form_tag(controller: :office_hours_session, action: :create)  do
+
+        =label_tag 'Course'
+        =select_tag(:course_id, options_for_select(@courses.collect{|r| [r.course_name, r.id]}))
+        =submit_tag 'Start Session', {class: 'waves-effect waves-light btn-small blue lighten-2 white_text'}
+    %div{class: 'input-field col s12 m9'}
+
+  %br
+
+= form_tag :action => 'join_queue' do
+
+  -#= label_tag 'Enter Queue ID:'
+  = text_field_tag 'queue_id', nil, {:placeholder => 'Queue ID'}
+
+  = submit_tag 'Join!', { id: 'queue_id', class: 'btn-small waves-effect waves-light blue lighten-2 white_text' }
+

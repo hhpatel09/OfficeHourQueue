@@ -1,0 +1,45 @@
+%br
+%br
+%div{class: 'row'}
+  %div{class: 'col s6'}
+    - @questions.each do |q|
+      - if @current_user.role_id <= @roles[:ta_role] || (q.student_id == @current_user.id)
+        %div{class: 'row'}
+          %div{class: 'col s12 m9'}
+            %div{class: 'card white hoverable'}
+              %div{class: 'card-header'}
+                %div{class: 'card-content'}
+                  %span{class: 'card-title'}
+                    %img{src: "#{@users.find(q.student_id).picture}", alt: '', class: 'circle', style: 'width:40px;height:40px;'}
+                    -#%i{class: 'material-icons card-icon', style: 'font-size: 23px'} person
+                    = @users.find(q.student_id).first_name
+                    = @users.find(q.student_id).last_name
+                  %p{style: 'word-wrap: break-word;'}= q.question_text
+                %div{class: 'card-action right-align'}
+                  - if (q.student_id == @current_user.id)
+                    %a{"data-method": :get, href: "/office_hours_session/#{q.office_hours_session_id}/question/#{q.id}/edit", class: 'waves-effect waves-light btn-small blue lighten-2'} Edit
+                  - if (q.student_id == @current_user.id || @current_user.role_id <= @roles[:ta_role])
+                    %a{"data-method": :delete, href: "/office_hours_session/#{q.office_hours_session_id}/question/#{q.id}", class: 'btn-small grey', id: "remove_#{q.id}"} Remove
+
+  %div{class: 'col s12 m6'}
+    %div{class: 'row'}
+      %div{class: 'col s9 offset-s2'}
+        %div{class: 'card white'}
+          %div{class: 'card-content'}
+            %span{class: 'card-title'}
+              = @course.course_name
+              = @course.semester
+            %span="Queue ID: #{@oh.uuid}"
+            %br
+            %span="Number of students in queue: #{ @questions.length }"
+            %br
+            - if @questions.index{ |q| q.student_id == @current_user.id } != nil && @current_user.role_id == @roles[:student_role]
+              %span="Your position in the queue: #{ @questions.index{ |q| q.student_id == @current_user.id } + 1 }"
+
+- if @current_user.role_id == @roles[:student_role] && @questions.index{ |q| q.student_id == @current_user.id } == nil
+  %div{class: 'fixed-action-btn horizontal', style: 'bottom: 45px; right: 150px;'}
+    %h4 Ask a question!
+  %div{class: 'fixed-action-btn horizontal', style: 'bottom: 45px; right: 24px;'}
+    = link_to new_office_hours_session_question_path(@id), {class: 'btn-floating btn-large waves-effect waves-light blue lighten-2', id: 'add_question'} do
+      %i{class: 'material-icons', style: 'font-size: 30px'} add
+

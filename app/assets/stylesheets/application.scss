@@ -1,0 +1,28 @@
+@import 'materialize';
+@import 'materialize/extras/nouislider';
+@import 'font-awesome';
+@import 'materialize-social.css';
+
+.land {
+  color: #737373;
+  margin-bottom: 100px;
+}
+
+.first_land_h1 {
+  padding: 0px;
+  margin-top: 180px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.second_land_h1 {
+  padding: 0px;
+  margin-top: 0px;
+  margin-bottom: 50px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.white_text input {
+  color: white;
+}

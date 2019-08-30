@@ -1,0 +1,27 @@
+- if @courses.present?
+  %table#courses{class: 'mdl-data-table mdl-js-data-table mdl-shadow--2dp highlight'}
+    %thead
+      %tr
+        %th Course Name
+        %th Department
+        %th Course Number
+        %th Semester
+        %th Edit Course
+        %th Edit Enrollment
+        %th
+    %tbody
+      - @courses.each do |c|
+        %tr
+          %td{class:'mdl-data-table__cell--non-numeric'}=c.course_name
+          %td{class:'mdl-data-table__cell--non-numeric'}=c.department_name
+          %td{class:'mdl-data-table__cell--non-numeric'}=c.course_number
+          %td{class:'mdl-data-table__cell--non-numeric'}=c.semester
+          %td=link_to( "Edit #{c.course_name}", edit_course_path(c))
+          %td=link_to( "Edit Enrollments", enrollment_path(c.id))
+          %td=button_to 'Remove', course_path(c.id), { :method => :delete, class: 'waves-effect waves-light btn-small grey white_text'}
+- else
+  %p No courses to modify
+
+%div{class: 'fixed-action-btn horizontal', style: 'bottom: 45px; right: 24px;'}
+  = link_to new_course_path, {class: 'btn-floating btn-large waves-effect waves-light blue lighten-2', id: 'add_question'} do
+    %i{class: 'material-icons', style: 'font-size: 30px'} add

@@ -1,0 +1,7 @@
+%h3 Edit your question
+
+= form_tag office_hours_session_question_path, method: :put do
+
+  = text_area_tag 'question', @question_info, {class: 'materialize-textarea', :placeholder => "This field can't be empty!"}
+
+  = submit_tag 'Update', { id: 'update_question', class: 'waves-effect waves-light btn-small blue lighten-2 white_text' }

@@ -1,0 +1,21 @@
+%h1 Course Edit User
+=form_tag controller: :enrollment, action: :create do
+  %table#enrollments{class: 'mdl-data-table mdl-js-data-table mdl-shadow--2dp highlight'}
+    %thead
+      %tr
+        %th User Name
+        %th Email
+        %th Select
+    %tbody
+      - @users.each do |u|
+        %tr
+          %td{class:'mdl-data-table__cell--non-numeric'}=u.first_name + " " + u.last_name
+          %td{class:'mdl-data-table__cell--non-numeric'}=u.email
+          %td
+            %label
+              =check_box_tag "user_list[#{u[:id]}]", :id => "checkbox_#{u[:id]}"
+              %span
+
+  %br
+  =submit_tag 'Add Users To Course', { id: 'course_user_remove_button', class: 'btn-small waves-effect waves-light blue lighten-2' }
+

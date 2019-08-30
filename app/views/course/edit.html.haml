@@ -1,0 +1,23 @@
+= form_tag controller: :course,action: :update do
+
+  %br
+  = label_tag 'Department Name:'
+  = text_field_tag 'department_name', @course.department_name
+  %br
+
+  = label_tag 'Course Number:'
+  = text_field_tag 'course_number', @course.course_number
+  %br
+
+  = label_tag 'Course Name:'
+  = text_field_tag 'course_name', @course.course_name
+  %br
+
+  = label_tag 'Semester:'
+  = text_field_tag 'semester', @course.semester
+  %br
+
+  = submit_tag 'Update course', { id: 'update_course', class: 'btn-small waves-effect waves-light blue lighten-2' }
+
+%br
+=button_to "Back", course_index_path, { method: :get, class: 'btn-small waves-effect waves-light blue lighten-2' }

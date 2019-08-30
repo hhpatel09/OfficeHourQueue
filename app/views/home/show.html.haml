@@ -1,0 +1,15 @@
+-#<h1> Welcome, please login to continue </h1>
+-#<a href="/auth/google_oauth2">Sign in with Google</a>
+
+%div{class: 'row'}
+  %div{class: 'col s2'}
+    %img{src: '/assets/students_books.svg'}
+  %div{class: 'col s6'}
+  %div{class: 'col s4'}
+    %div{class: 'row'}
+      %h1{class: 'first_land_h1'} Office Hours,
+      %h1{class: 'second_land_h1'} Done Right.
+      %p{class: 'land'} Office hours should have some structure to it. Our queuing system makes it easier and faster to get the right help the first time.
+      %a{id: 'google_signin', href: login_path, class: 'waves-effect waves-light btn social google deep-orange darken-3'}
+        %i{class: 'fa fa-google'}
+        Sign in with Google

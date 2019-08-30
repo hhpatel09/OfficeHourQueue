@@ -1,0 +1,7 @@
+%h3 Ask a question
+
+= form_tag :action => 'create' do
+
+  = text_area_tag 'question', nil, {class: 'materialize-textarea', :placeholder => 'Your question here'}
+
+  = submit_tag 'Ask!', { id: 'ask_question', class: 'waves-effect waves-light btn-small blue lighten-2 white_text' }
